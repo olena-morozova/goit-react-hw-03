@@ -1,21 +1,29 @@
-/*import ContactForm from "./components/ContactForm/ContactForm";
-import SearchBox from "./components/SearchBox/SearchBox";*/
+import { useState } from "react";
+/*import ContactForm from "./components/ContactForm/ContactForm";*/
+import SearchBox from "./components/SearchBox/SearchBox";
 import ContactList from "./components/ContactList/ContactList";
 
 import contacts from "./contacts.json";
 
 export default function App() {
+  const [inputValue, setInputValue] = useState("");
+
+  const visibleContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(inputValue.toLowerCase())
+  );
+
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactList items={contacts} />
+      <SearchBox filteredValue={inputValue} onFilter={setInputValue} />
+      <ContactList items={visibleContacts} />
     </div>
   );
 }
 
 /*
   <ContactForm />
-      <SearchBox />
+      
       
 
 import { useState } from 'react'

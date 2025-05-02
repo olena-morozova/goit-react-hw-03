@@ -1,14 +1,16 @@
 import css from "./ContactList.module.css";
-export default function ContactList({ items }) {
+export default function ContactList({ items, onDelete }) {
   return (
-    <ul>
+    <ul className={css.list}>
       {items.map(({ id, name, number }) => (
         <li className={css.item} key={id}>
           <div className={css.cotent}>
             <p>{name}</p>
             <p>{number}</p>
           </div>
-          <button className={css.btnDel}>Delete</button>
+          <button className={css.btnDel} onClick={() => onDelete(id)}>
+            Delete
+          </button>
         </li>
       ))}
     </ul>

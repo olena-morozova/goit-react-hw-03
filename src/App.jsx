@@ -7,7 +7,6 @@ import ContactList from "./components/ContactList/ContactList";
 import initialContacts from "./contacts.json";
 
 export default function App() {
-  //const [contacts, setContacts] = useState(initialContacts);
   const [contacts, setContacts] = useState(() => {
     const savedContacts = localStorage.getItem("contacts");
     return savedContacts ? JSON.parse(savedContacts) : initialContacts;
@@ -19,22 +18,11 @@ export default function App() {
 
   const [inputValue, setInputValue] = useState("");
 
-  //const addTask = (newTask) => {
-  //  setTasks((prevTasks) => {
-  //  return [...prevTasks, newTask];
-  //});
-  //};
-
   const addContact = (newContact) => {
     setContacts((prevContacts) => {
       return [...prevContacts, newContact];
     });
   };
-  /*const deleteTask = (taskId) => {
-    setTasks((prevTasks) => {
-      return prevTasks.filter((task) => task.id !== taskId);
-    });
-  };*/
 
   const deleteContact = (contactId) => {
     setContacts((prevContacts) => {
@@ -51,7 +39,7 @@ export default function App() {
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox filteredValue={inputValue} onFilter={setInputValue} />
-      <ContactList items={visibleContacts} onDelete={deleteContact} />
+      <ContactList contacts={visibleContacts} onDelete={deleteContact} />
     </div>
   );
 }

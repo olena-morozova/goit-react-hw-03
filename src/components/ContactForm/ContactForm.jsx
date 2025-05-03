@@ -20,20 +20,12 @@ export default function ContactForm({ onAdd }) {
       .min(3, "Too Short!")
       .max(50, "Too Long!")
       .required("Required"),
-    //email: Yup.string().email("Must be a valid email!").required("Required"),
   });
 
   const nameFieldId = useId();
   const phoneFieldId = useId();
 
   const handleSubmit = (values, actions) => {
-    /*console.log(values);
-
-    onAdd({
-      id: `id-${nanoid(3)}`,
-      name: values.name,
-      number: values.number,
-    });*/
     const newContact = {
       id: `id-${nanoid(3)}`,
       name: values.name,
@@ -84,5 +76,3 @@ export default function ContactForm({ onAdd }) {
     </Formik>
   );
 }
-
-/*ContactForm*/
